@@ -21,13 +21,19 @@ app.get('/', (request, response) => {
 app.get('*', (req, res) => {
   res.status(404);
   res.statusMessage = 'Not Found';
-  res.render('not-found', {request:req})
+  res.render('not-found', {tacos:req})
 })
 
 app.post('/save', (request, response) => {
   response.send(request.body);
 })
 
+// Error handling
+app.use((err, req, res, next) => {
+  res.status(500);
+  res.statusMessage('This is a server error');
+  res.render('error', {request:req, err: err})
+})
 
 
 module.exports = {
