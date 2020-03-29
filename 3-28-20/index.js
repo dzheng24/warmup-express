@@ -9,10 +9,16 @@ const router = require('./routes/api/members');
 // Init middleware
 // app.use(logger);
 
+// Body Parser Middleware
+app.use(express.json());
+app.use(express.urlencoded({extended: false}))
+
 
 // set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+// Members API Routes 
 app.use('/api/members', (router))
 
 
