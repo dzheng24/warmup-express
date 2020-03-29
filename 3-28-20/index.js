@@ -4,6 +4,7 @@ const exphbs = require('express-handlebars');
 const logger = require('./middleware/logger');
 const app = express();
 const router = require('./routes/api/members');
+const members = require('./Members');
 
 
 
@@ -18,7 +19,8 @@ app.set('view engine', 'handlebars');
 // HomePage Route
 app.get('/', (req, res) => {
   res.render('index', {
-    title: 'Member App'
+    title: 'Member App',
+    members
   });
 })
 
